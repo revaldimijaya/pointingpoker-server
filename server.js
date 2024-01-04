@@ -3,6 +3,8 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http, { cors: { origin: '*' } });
 const PORT= process.env.PORT || 4000;
 const rooms = new Map(); // Map to store participants in each room
+var cors = require('cors');
+app.use(cors());
 
 app.get('/', (req,res) => {
   res.write(`<h1>Socket IO Start on Port : ${PORT}</h1>`);
