@@ -1,9 +1,19 @@
 {
-    "name": "my-socketio-app",
+    "name": "pointingpoker-server",
     "version": "1.0.0",
+    "engines": {
+        "node": ">=18"
+    },
+    "scripts": {
+        "start": "node server.js",
+        "test": "node --test"
+    },
     "dependencies": {
         "cors": "^2.8.5",
         "express": "^4.18.2",
         "socket.io": "^4.6.2"
+    },
+    "devDependencies": {
+        "socket.io-client": "^4.6.2"
     }
 }
