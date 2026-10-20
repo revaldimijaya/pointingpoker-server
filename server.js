@@ -41,6 +41,7 @@ io.on('connection', (socket) => {
   socket.on('message', (message) => {
     // console.log('Received message:', message);
     let room = rooms.get(message.room)
+    if (!room) return; // unknown room (e.g. server restarted); ignore instead of crashing
     room.forEach(participant => {
       // console.log("participant: ", participant)
       if (participant.id === message.id) {
@@ -64,6 +65,7 @@ io.on('connection', (socket) => {
   socket.on('reset', (payload) => {
     console.log('Received reset:', payload);
     let room = rooms.get(payload.room)
+    if (!room) return; // unknown room (e.g. server restarted); ignore instead of crashing
     room.forEach(participant => {
       participant.value = 0
     })
